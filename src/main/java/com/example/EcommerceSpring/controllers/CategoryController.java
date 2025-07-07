@@ -2,6 +2,7 @@ package com.example.EcommerceSpring.controllers;
 
 import com.example.EcommerceSpring.dto.CategoryDTO;
 import com.example.EcommerceSpring.services.ICategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +23,9 @@ public class CategoryController
     }
 
     @GetMapping
-    public List<CategoryDTO> getAllCategory() throws IOException{
-       return this.categoryService.getAllCategory();
+    public ResponseEntity<List<CategoryDTO>> getAllCategory() throws IOException{
+       List<CategoryDTO> response =  this.categoryService.getAllCategory();
+       return ResponseEntity.ok(response);
     }
 
 }
