@@ -18,7 +18,7 @@ Currently under development — **powered by [FakeStoreAPI](https://fakestoreapi
 |--------------------|----------------------|
 | Language           | Java (17+)           |
 | Framework          | Spring Boot          |
-| Client Library     | Retrofit, OkHttp     |
+| Client Library     | Retrofit             |
 | JSON Conversion    | Gson                 |
 | Data Mapping       | DTOs + Mapper class  |
 | Build Tool         | Gradle               |
