@@ -1,12 +1,10 @@
 package com.example.EcommerceSpring.gateway;
 
-import com.example.EcommerceSpring.dto.CategoryDTO;
-import com.example.EcommerceSpring.dto.FakeStoreCategoryResponseDTO;
-import com.example.EcommerceSpring.dto.FakeStoreProductResponse;
-import com.example.EcommerceSpring.dto.ProductDTO;
+import com.example.EcommerceSpring.dto.*;
 import com.example.EcommerceSpring.gateway.api.FakeProductApi;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class FakeStoreProductGateway implements IProductGateway
@@ -27,5 +25,15 @@ public class FakeStoreProductGateway implements IProductGateway
             throw new IOException("Failed to fetch categories from FakeStore API");
         }
        return response.getProduct();
+    }
+
+    @Override
+    public List<ProductsDTO> getAllProducts() throws Exception {
+       FakeAllProductResponseDTO response = this.fakeProductApi.getAllProducts().execute().body();
+        if(response==null)
+        {
+            throw new IOException("Failed to fetch products from FakeStore API");
+        }
+        return response.getProducts();
     }
 }

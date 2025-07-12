@@ -12,7 +12,7 @@ import java.util.List;
 public class FakeStoreCategoryService implements ICategoryService
 {
 
-    private  final ICategoryGateway categoryGateway;
+    private final ICategoryGateway categoryGateway;
 
     public FakeStoreCategoryService(@Qualifier("fakeStoreRest") ICategoryGateway categoryGateway) {
         this.categoryGateway = categoryGateway;

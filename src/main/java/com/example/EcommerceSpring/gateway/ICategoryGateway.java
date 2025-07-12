@@ -11,3 +11,4 @@ public interface ICategoryGateway
 {
    List<CategoryDTO> getAllCategory() throws IOException;
 }
+

@@ -8,5 +8,5 @@ import retrofit2.http.GET;
 public interface FakeCategoryApi
 {
     @GET("products/category")
-    Call<FakeStoreCategoryResponseDTO> getAllFakeCategories();
+    Call<FakeStoreCategoryResponseDTO> getAllFakeCategories(); // Interface tell us "Kis Class Mein Convert Karna Hai
 }
