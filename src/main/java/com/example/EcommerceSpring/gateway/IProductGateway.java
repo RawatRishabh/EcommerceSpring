@@ -9,4 +9,5 @@ public interface IProductGateway
 {
     ProductDTO getProductById(long id) throws Exception;
     List<ProductsDTO> getAllProducts() throws Exception;
+    List<ProductsDTO> getProducts_page(long num) throws Exception;
 }

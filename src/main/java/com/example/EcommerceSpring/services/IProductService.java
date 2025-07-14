@@ -10,4 +10,6 @@ public interface IProductService
 {
     ProductDTO getProductByID(Long id) throws Exception;
     List<ProductsDTO> getAllProducts() throws Exception;
+    List<ProductsDTO> getProducts_page(long num) throws Exception;
 }
+

@@ -36,4 +36,15 @@ public class FakeStoreProductGateway implements IProductGateway
         }
         return response.getProducts();
     }
+
+    @Override
+    public List<ProductsDTO> getProducts_page(long num) throws Exception {
+        FakeAllProductResponseDTO response = this.fakeProductApi.getProducts_page(num).execute().body();
+        if(response==null)
+        {
+            throw new IOException("Failed to fetch products from page in FakeStore API");
+        }
+        return response.getProducts();
+
+    }
 }

@@ -4,10 +4,7 @@ import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.dto.ProductsDTO;
 import com.example.EcommerceSpring.services.IProductService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,4 +30,11 @@ public class ProductController
        List<ProductsDTO> productsDTOS = this.iProductService.getAllProducts();
        return ResponseEntity.ok(productsDTOS);
     }
+
+    @GetMapping("/api/products/")
+    public ResponseEntity<List<ProductsDTO>> getProducts_page(@RequestParam("page") long num) throws Exception {
+        List<ProductsDTO> productsPage = this.iProductService.getProducts_page(num);
+        return ResponseEntity.ok(productsPage);
+    }
+
 }
