@@ -1,6 +1,7 @@
 package com.example.EcommerceSpring.gateway;
 import com.example.EcommerceSpring.dto.CategoryDTO;
 import com.example.EcommerceSpring.dto.FakeStoreCategoryResponseDTO;
+import com.example.EcommerceSpring.dto.ProductsDTO;
 import com.example.EcommerceSpring.mappers.GetAllCategoriesMapper;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.List;
 
-@Component("fakeStoreRest")
+@Component
 public class FakeStoreCategoryRestTemplateGateway implements ICategoryGateway
 {
     private final RestTemplateBuilder restTemplateBuilder;
@@ -30,5 +31,10 @@ public class FakeStoreCategoryRestTemplateGateway implements ICategoryGateway
             throw new IOException("Failed to fetch categories from FakeStoreAPI");
         }
         return GetAllCategoriesMapper.tocategoryDTOList(response.getBody());
+    }
+
+    @Override
+    public List<ProductsDTO> getCategoryProduct(String product, String order) throws Exception {
+        return List.of();
     }
 }

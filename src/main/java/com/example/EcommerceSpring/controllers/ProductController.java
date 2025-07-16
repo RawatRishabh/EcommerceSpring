@@ -31,7 +31,7 @@ public class ProductController
        return ResponseEntity.ok(productsDTOS);
     }
 
-    @GetMapping("/api/products/")
+    @GetMapping(params = {"page"})
     public ResponseEntity<List<ProductsDTO>> getProducts_page(@RequestParam("page") long num) throws Exception {
         List<ProductsDTO> productsPage = this.iProductService.getProducts_page(num);
         return ResponseEntity.ok(productsPage);
