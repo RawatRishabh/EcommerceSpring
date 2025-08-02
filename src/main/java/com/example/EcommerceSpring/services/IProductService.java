@@ -1,15 +1,14 @@
 package com.example.EcommerceSpring.services;
 
 import com.example.EcommerceSpring.dto.ProductDTO;
-import com.example.EcommerceSpring.dto.ProductsDTO;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface IProductService
 {
     ProductDTO getProductByID(Long id) throws Exception;
-    List<ProductsDTO> getAllProducts() throws Exception;
-    List<ProductsDTO> getProducts_page(long num) throws Exception;
+    List<ProductDTO> getAllProducts() throws Exception;
+    List<ProductDTO> getProducts_page(long num) throws Exception;
+    ProductDTO createProduct (ProductDTO dto) throws Exception;
 }
 

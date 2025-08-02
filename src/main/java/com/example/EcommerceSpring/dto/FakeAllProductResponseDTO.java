@@ -12,5 +12,5 @@ import lombok.*;
 public class FakeAllProductResponseDTO{
 	private String message;
 	private String status;
-	private List<ProductsDTO> products;
+	private List<ProductDTO> products;
 }

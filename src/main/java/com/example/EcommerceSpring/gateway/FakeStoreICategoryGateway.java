@@ -3,7 +3,7 @@ package com.example.EcommerceSpring.gateway;
 import com.example.EcommerceSpring.dto.CategoryDTO;
 import com.example.EcommerceSpring.dto.FakeAllProductResponseDTO;
 import com.example.EcommerceSpring.dto.FakeStoreCategoryResponseDTO;
-import com.example.EcommerceSpring.dto.ProductsDTO;
+import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.gateway.api.FakeCategoryApi;
 import com.example.EcommerceSpring.mappers.GetAllCategoriesMapper;
 import org.springframework.stereotype.Component;
@@ -37,7 +37,7 @@ public class FakeStoreICategoryGateway implements ICategoryGateway
     }
 
     @Override
-    public List<ProductsDTO> getCategoryProduct(String product, String order) throws Exception {
+    public List<ProductDTO> getCategoryProduct(String product, String order) throws Exception {
         FakeAllProductResponseDTO response = this.fakeCategoryApi.getCategoryProduct(product,order).execute().body();
         if(response==null)
         {

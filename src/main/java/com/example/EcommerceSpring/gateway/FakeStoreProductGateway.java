@@ -28,7 +28,7 @@ public class FakeStoreProductGateway implements IProductGateway
     }
 
     @Override
-    public List<ProductsDTO> getAllProducts() throws Exception {
+    public List<ProductDTO> getAllProducts() throws Exception {
        FakeAllProductResponseDTO response = this.fakeProductApi.getAllProducts().execute().body();
         if(response==null)
         {
@@ -38,7 +38,7 @@ public class FakeStoreProductGateway implements IProductGateway
     }
 
     @Override
-    public List<ProductsDTO> getProducts_page(long num) throws Exception {
+    public List<ProductDTO> getProducts_page(long num) throws Exception {
         FakeAllProductResponseDTO response = this.fakeProductApi.getProducts_page(num).execute().body();
         if(response==null)
         {

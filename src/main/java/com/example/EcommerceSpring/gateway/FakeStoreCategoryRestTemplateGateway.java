@@ -1,7 +1,7 @@
 package com.example.EcommerceSpring.gateway;
 import com.example.EcommerceSpring.dto.CategoryDTO;
 import com.example.EcommerceSpring.dto.FakeStoreCategoryResponseDTO;
-import com.example.EcommerceSpring.dto.ProductsDTO;
+import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.mappers.GetAllCategoriesMapper;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +34,7 @@ public class FakeStoreCategoryRestTemplateGateway implements ICategoryGateway
     }
 
     @Override
-    public List<ProductsDTO> getCategoryProduct(String product, String order) throws Exception {
+    public List<ProductDTO> getCategoryProduct(String product, String order) throws Exception {
         return List.of();
     }
 }
