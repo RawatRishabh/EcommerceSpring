@@ -1,8 +1,11 @@
 package com.example.EcommerceSpring.services;
 
 import com.example.EcommerceSpring.dto.ProductDTO;
+import com.example.EcommerceSpring.entity.Category;
 import com.example.EcommerceSpring.entity.Product;
+import com.example.EcommerceSpring.mappers.CategoryMapper;
 import com.example.EcommerceSpring.mappers.ProductMapper;
+import com.example.EcommerceSpring.repository.CategoryRepository;
 import com.example.EcommerceSpring.repository.ProductRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -14,9 +17,11 @@ import java.util.List;
 public class ProductService implements IProductService{
 
     private final ProductRepository repo;
+    private final CategoryRepository repository;
 
-    public ProductService(ProductRepository repo) {
+    public ProductService(ProductRepository repo, CategoryRepository repository) {
         this.repo = repo;
+        this.repository = repository;
     }
 
     @Override
@@ -45,11 +50,13 @@ public class ProductService implements IProductService{
 
     @Override
     public ProductDTO createProduct(ProductDTO dto) throws Exception {
-        Product saved = repo.save(ProductMapper.toEntity(dto)); // Updates Entity Object return
+        Category category = repository.findById(dto.getCategoryId()).orElseThrow(()->new Exception("Category not found"));
+        Product saved = repo.save(ProductMapper.toEntity(dto,category)); // Updates Entity Object return
         return  ProductMapper.toDTO(saved);
         /*
         * repo.save() sirf new row (data entry) add karta hai ya existing row ko update karta hai.
           Ye table kabhi bhi nahi banata — table to app ke start hone par Hibernate banata hai (agar config allow kare).
         */
+
     }
 }
