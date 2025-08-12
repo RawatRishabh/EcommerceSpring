@@ -1,5 +1,6 @@
 package com.example.EcommerceSpring.services;
 
+import com.example.EcommerceSpring.dto.ProductCategoryDTO;
 import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.entity.Category;
 import com.example.EcommerceSpring.entity.Product;
@@ -8,6 +9,7 @@ import com.example.EcommerceSpring.mappers.ProductMapper;
 import com.example.EcommerceSpring.repository.CategoryRepository;
 import com.example.EcommerceSpring.repository.ProductRepository;
 import org.springframework.context.annotation.Primary;
+import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -58,5 +60,11 @@ public class ProductService implements IProductService{
           Ye table kabhi bhi nahi banata — table to app ke start hone par Hibernate banata hai (agar config allow kare).
         */
 
+    }
+
+    @Override
+    public ProductCategoryDTO getProductWithCategory(long id) throws Exception {
+        Product product = repo.findById(id).orElseThrow(()->new Exception("Product not found in DB"));
+        return ProductMapper.to_DTO(product);
     }
 }

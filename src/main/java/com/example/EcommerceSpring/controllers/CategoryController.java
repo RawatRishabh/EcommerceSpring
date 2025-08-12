@@ -22,9 +22,15 @@ public class CategoryController
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getAllCategory() throws IOException{
-       List<CategoryDTO> response =  this.categoryService.getAllCategory();
-       return ResponseEntity.ok(response);
+    public ResponseEntity<?> getAllCategory(@RequestParam(required = false) String name) throws Exception {
+        if(name!=null && name!=""){
+            CategoryDTO categoryDTO = categoryService.findByName(name);
+            return  ResponseEntity.ok(categoryDTO);
+        }
+            else{
+            List<CategoryDTO> response =  this.categoryService.getAllCategory();
+            return ResponseEntity.ok(response);
+        }
     }
 
     @GetMapping(params = {"type","sort"})

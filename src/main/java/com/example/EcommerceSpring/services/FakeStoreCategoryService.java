@@ -34,4 +34,9 @@ public class FakeStoreCategoryService implements ICategoryService
     public CategoryDTO createCategory(CategoryDTO dto) throws Exception {
         return null;
     }
+
+    @Override
+    public CategoryDTO findByName(String name) throws Exception {
+        return null;
+    }
 }
