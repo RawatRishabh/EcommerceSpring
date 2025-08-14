@@ -3,6 +3,7 @@ package com.example.EcommerceSpring.services;
 import com.example.EcommerceSpring.dto.CategoryDTO;
 import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.entity.Category;
+import com.example.EcommerceSpring.exception.CategoryNotFoundException;
 import com.example.EcommerceSpring.mappers.CategoryMapper;
 import com.example.EcommerceSpring.repository.CategoryRepository;
 import org.springframework.context.annotation.Primary;
@@ -38,8 +39,8 @@ public class CategoryService implements ICategoryService{
     }
 
     @Override
-    public CategoryDTO findByName(String name) throws Exception {
-        Category category = repo1.findByName(name).orElseThrow(()->new Exception("Category not found"));
+    public CategoryDTO findByName(String name)  {
+        Category category = repo1.findByName(name).orElseThrow(()->new CategoryNotFoundException("Category "+name+" not found in DB!"));
         return CategoryMapper.toDto(category);
     }
 

@@ -18,17 +18,16 @@ public interface ProductRepository extends JpaRepository<Product,Long>
      */
 
     // This is a custom query method using HQL. Explicitly define the logic.
-//    @Query("SELECT p from Product p WHERE p.price> :minPrice")
-//    List<Product> findExpensiveProducts(@Param("minPrice") int minPrice); // Homework
+     @Query("SELECT p from Product p WHERE p.price> :minPrice")
+     List<Product> findExpensiveProducts(@Param("minPrice") int minPrice); // Homework
 
     // Raw Query/Native Query
-   // @Query(value="Select * from product where match(name,description) against(:keyword)",nativeQuery = true)
-//    List<Product> searchFullText(@Param("keyword") String keyword); // Homework
-//
-//    @Query("Select p from product p where p.price > :min_price AND p.brand = :brand_name")
-//    List<Product> findBybrandandPrice(@Param("min_price") int min_price, @Param("brand_name") String brand_name);
+    @Query(value="Select * from product where match(name,description) against(:keyword)",nativeQuery = true)
+    List<Product> searchFullText(@Param("keyword") String keyword); // Homework
 
-    // getAllProductsOfaCategory (Homework)
+     @Query("Select p from Product p where p.price > :min_price AND p.brand = :brand_name")
+     List<Product> find_Brand_Price(@Param("min_price") int min_price, @Param("brand_name") String brand_name);
 
+    // getAllProductsOfaCategory (Homework) ('/category/{id}/products')
 }
 

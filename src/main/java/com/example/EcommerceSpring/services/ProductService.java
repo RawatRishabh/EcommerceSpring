@@ -4,6 +4,7 @@ import com.example.EcommerceSpring.dto.ProductCategoryDTO;
 import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.entity.Category;
 import com.example.EcommerceSpring.entity.Product;
+import com.example.EcommerceSpring.exception.ProductNotFoundException;
 import com.example.EcommerceSpring.mappers.CategoryMapper;
 import com.example.EcommerceSpring.mappers.ProductMapper;
 import com.example.EcommerceSpring.repository.CategoryRepository;
@@ -27,10 +28,10 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public ProductDTO getProductByID(Long id) throws Exception {
+    public ProductDTO getProductByID(Long id) {
         return repo.findById(id)
                 .map(ProductMapper::toDTO)
-                .orElseThrow(() -> new Exception("Product not found!"));
+                .orElseThrow(() -> new ProductNotFoundException("Product ID : " + id + " not found!"));
       /* .map() aur .orElseThrow() tumhare ProductMapper se nahi aaye —
         Ye Optional<Product> class ke methods hain jo repo.findById(id) return karta hai.
         Iska kaam hai: agar product mila to usko ProductDTO me convert karo, warna exception throw karo.

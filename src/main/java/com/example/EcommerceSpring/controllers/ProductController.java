@@ -2,7 +2,9 @@ package com.example.EcommerceSpring.controllers;
 
 import com.example.EcommerceSpring.dto.ProductCategoryDTO;
 import com.example.EcommerceSpring.dto.ProductDTO;
+import com.example.EcommerceSpring.exception.ProductNotFoundException;
 import com.example.EcommerceSpring.services.IProductService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,4 +49,5 @@ public class ProductController
     {
         return ResponseEntity.ok(this.iProductService.getProductWithCategory(id));
     }
+
 }
