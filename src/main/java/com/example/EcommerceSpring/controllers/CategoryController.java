@@ -1,5 +1,6 @@
 package com.example.EcommerceSpring.controllers;
 
+import com.example.EcommerceSpring.dto.CategoryAllProductDTO;
 import com.example.EcommerceSpring.dto.CategoryDTO;
 import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.services.ICategoryService;
@@ -42,5 +43,11 @@ public class CategoryController
     @PostMapping
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO dto) throws Exception {
         return ResponseEntity.ok(this.categoryService.createCategory(dto));
+    }
+
+    @GetMapping("/{id}/products")
+    public ResponseEntity<CategoryAllProductDTO> getAllProductInCategory(@PathVariable("id") long id)
+    {
+        return ResponseEntity.ok(this.categoryService. getAllProductInCategory(id));
     }
 }
