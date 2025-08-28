@@ -15,6 +15,7 @@ import java.util.List;
 public class CategoryController
 {
 
+    // http://localhost:8085/swagger-ui/index.html
     private final ICategoryService categoryService;
     
     public CategoryController(ICategoryService categoryService)
